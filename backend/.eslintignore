@@ -1,0 +1,9 @@
+node_modules/
+tests/
+dist/
+src/database/migrations
+src/database/seeders
+src/database/config
+src/database/models/index.ts
+src/middlewares/errorHandler.ts
+src/docs/swagger.config.ts

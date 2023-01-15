@@ -1,0 +1,38 @@
+version: '3.9'
+services:
+  frontend:
+    container_name: app_frontend
+    build: ./frontend-serve
+    restart: on-failure
+    ports:
+      - 3000:3000
+    platform: linux/x86_64
+    depends_on:
+      - backend
+  
+  backend:
+    container_name: app_backend
+    build: ./backend
+    restart: 'always'
+    ports:
+      - 3001:3001
+    platform: linux/x86_64
+    environment:
+      - JWT_SECRET=jwt_secret
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DATABASE=e-transfer
+      - POSTGRES_HOST=db
+      - POSTGRES_USER=postgres
+    depends_on:
+      - db
+
+  db:
+    image: postgres:14.1-alpine
+    container_name: postgres_db
+    platform: linux/x86_64
+    ports:
+      - 3002:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    restart: 'always'
