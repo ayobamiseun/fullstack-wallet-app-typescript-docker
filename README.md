@@ -40,4 +40,5 @@ Make sure [Docker](https://www.docker.com/) is installed.
 
 ```bash
 git clone https://github.com/fullstack-wallet-app-typescript-docker.git
-cd e-transfer-app
+cd fullstack-wallet-app-typescript-docker
+
