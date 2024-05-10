@@ -1,9 +1,14 @@
 import { Router } from 'express';
 import { accountController } from './main';
+import authMiddleware from '../middlewares/authMiddleware';
 
 const accountRouter = Router();
 
-accountRouter.get('/account/:id', accountController.balanceAccount);
+accountRouter.get(
+  '/account/:id',
+  authMiddleware,
+  accountController.balanceAccount,
+);
 
 export default accountRouter;
 

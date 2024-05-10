@@ -7,8 +7,9 @@ export default class AccountController {
 
   balanceAccount = async (req: Request, res: Response) => {
     const { id } = req.params;
-    const token = String(req.headers.authorization);
-    await this.accountService.checkIfIsAuthorized(token, id);
+    if (!req.user || req.user.accountId !== Number(id)) {
+      throw Error('UnauthorizedError');
+    }
 
     const balance = await this.accountService.balanceAccount(id);
     res.status(StatusCodes.OK).json(balance);
