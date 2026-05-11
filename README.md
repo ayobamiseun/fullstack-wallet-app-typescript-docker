@@ -1,50 +1,50 @@
-# 💸 Cash Transactions App
+# Cash Transactions App
 
 A full-stack wallet application with end-to-end account management, multi-type transactions, two-factor authentication, KYC, scheduled and recurring transfers, admin tooling, webhooks, and CSV statement exports. Built with **React**, **Node.js**, **Express**, **Sequelize**, **PostgreSQL**, and **Docker**.
 
 ---
 
-## 🚀 Features
+## Features
 
 ### Auth & Account Security
-- 🔐 Registration & login with **bcrypt**-hashed passwords (legacy MD5 hashes are auto-upgraded on next login)
-- ♻️ **Short-lived access tokens (15m) + opaque refresh tokens (7d)** with rotation on every refresh
-- 🛂 **TOTP-based 2FA** (compatible with Google Authenticator / 1Password); QR code returned on enrollment
-- 🚦 **Rate limiting** on login, registration, and password-reset endpoints
-- ✉️ Forgot Password & Reset via Email (with refresh-token revocation on reset)
+- Registration & login with **bcrypt**-hashed passwords (legacy MD5 hashes are auto-upgraded on next login)
+- **Short-lived access tokens (15m) + opaque refresh tokens (7d)** with rotation on every refresh
+- **TOTP-based 2FA** (compatible with Google Authenticator / 1Password); QR code returned on enrollment
+- **Rate limiting** on login, registration, and password-reset endpoints
+- Forgot Password & Reset via Email (with refresh-token revocation on reset)
 
 ### Wallets & Transactions
-- 💰 Account balance lookup
-- 📤 **Transfers, deposits, and withdrawals** as first-class transaction types
-- 🧾 Transaction **metadata**: description, category, reference, idempotency key
-- 🛑 Daily & monthly **spending limits** (users can lower their own)
-- 🔍 Filterable + paginated transaction list (`type`, `status`, `category`, `minAmount`, `maxAmount`, `from`, `to`, `direction`, `page`, `pageSize`)
-- 📂 **CSV statement export** with the same filters
-- 🔁 **Idempotency** via `Idempotency-Key` header on all write endpoints
+- Account balance lookup
+- **Transfers, deposits, and withdrawals** as first-class transaction types
+- Transaction **metadata**: description, category, reference, idempotency key
+- Daily & monthly **spending limits** (users can lower their own)
+- Filterable + paginated transaction list (`type`, `status`, `category`, `minAmount`, `maxAmount`, `from`, `to`, `direction`, `page`, `pageSize`)
+- **CSV statement export** with the same filters
+- **Idempotency** via `Idempotency-Key` header on all write endpoints
 
 ### Wallet Features
-- ⭐ **Beneficiaries** — saved recipients with optional labels
-- 🤝 **Transfer requests** — request payment from another user; approve / decline / cancel
-- ⏰ **Scheduled & recurring transfers** — ONCE / DAILY / WEEKLY / MONTHLY cadence with in-process runner
-- 🌍 **Multi-currency** ledger (USD, EUR, GBP, NGN seeded; conversion helper provided)
+- **Beneficiaries** — saved recipients with optional labels
+- **Transfer requests** — request payment from another user; approve / decline / cancel
+- **Scheduled & recurring transfers** — ONCE / DAILY / WEEKLY / MONTHLY cadence with in-process runner
+- **Multi-currency** ledger (USD, EUR, GBP, NGN seeded; conversion helper provided)
 
 ### Identity, Compliance, & Admin
-- 🆔 **KYC submission** flow (full name, date of birth, document number)
-- 👮 **Admin endpoints** — list users, freeze/unfreeze accounts, approve/reject KYC, reverse transactions, view audit logs
-- 📜 **Audit log** for all sensitive events (logins, 2FA changes, KYC, money movement, admin actions)
+- **KYC submission** flow (full name, date of birth, document number)
+- **Admin endpoints** — list users, freeze/unfreeze accounts, approve/reject KYC, reverse transactions, view audit logs
+- **Audit log** for all sensitive events (logins, 2FA changes, KYC, money movement, admin actions)
 
 ### Integrations
-- 🔔 **Email notifications** on transfers sent, received, deposits, withdrawals, and incoming payment requests
-- 🪝 **Webhooks** with HMAC-SHA256 signed delivery (subscribe to `transaction.created`, `transaction.reversed`, `transfer_request.*` events)
+- **Email notifications** on transfers sent, received, deposits, withdrawals, and incoming payment requests
+- **Webhooks** with HMAC-SHA256 signed delivery (subscribe to `transaction.created`, `transaction.reversed`, `transfer_request.*` events)
 
 ### Other
-- 📘 Swagger API Docs at `/docs`
-- 🧪 Seed Data for Demo
-- 🐳 Fully Dockerized Setup
+- Swagger API Docs at `/docs`
+- Seed Data for Demo
+- Fully Dockerized Setup
 
 ---
 
-## 📦 Tech Stack
+## Tech Stack
 
 | Layer        | Technology                                       |
 |--------------|--------------------------------------------------|
@@ -63,7 +63,7 @@ A full-stack wallet application with end-to-end account management, multi-type t
 
 ---
 
-## 🗂️ API Overview
+## API Overview
 
 All authenticated endpoints expect `Authorization: Bearer <accessToken>`.
 
@@ -133,7 +133,7 @@ All authenticated endpoints expect `Authorization: Bearer <accessToken>`.
 
 ---
 
-## 🐳 Getting Started with Docker
+## Getting Started with Docker
 
 Make sure [Docker](https://www.docker.com/) is installed.
 
@@ -178,7 +178,7 @@ The backend will run migrations and seed data automatically.
 
 ---
 
-## 🔑 Seeded Test Users
+## Seeded Test Users
 
 All seeded users share the dev password **`Test1234!`**.
 
@@ -198,7 +198,7 @@ UPDATE users SET role = 'ADMIN' WHERE username = 'test1';
 
 ---
 
-## 🧱 Project Layout
+## Project Layout
 
 ```
 backend/src/
@@ -213,13 +213,13 @@ backend/src/
 │   ├── migrations/
 │   └── seeders/
 ├── interfaces/                # Shared TS types
-├── errors/catalog.ts          # Mapped error codes → HTTP statuses
+├── errors/catalog.ts          # Mapped error codes -> HTTP statuses
 └── types/express.d.ts         # Augments Request with req.user
 ```
 
 ---
 
-## 🛡️ Notes on Production Hardening
+## Notes on Production Hardening
 
 This codebase is MVP-quality. Before going to production:
 
@@ -233,7 +233,7 @@ This codebase is MVP-quality. Before going to production:
 
 ---
 
-## 📘 API Docs
+## API Docs
 
 Once the server is running, browse interactive docs at:
 
